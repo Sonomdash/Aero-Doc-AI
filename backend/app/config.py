@@ -15,9 +15,9 @@ class Settings(BaseSettings):
     CHROMA_HOST: str = "localhost"
     CHROMA_PORT: int = 8000
     
-    # Google Gemini API
-    GEMINI_API_KEY: str
-    
+    # Groq API
+    GROQ_API_KEY: str
+
     # JWT
     SECRET_KEY: str
     ALGORITHM: str = "HS256"
@@ -41,8 +41,8 @@ class Settings(BaseSettings):
     TOP_K_RESULTS: int = 5
     
     # LLM Configuration
-    LLM_MODEL: str = "gemini-1.5-flash"
-    EMBEDDING_MODEL: str = "models/text-embedding-004"
+    LLM_MODEL: str = "llama-3.3-70b-versatile"
+    EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
     LLM_TEMPERATURE: float = 0.7
     MAX_OUTPUT_TOKENS: int = 2048
     
