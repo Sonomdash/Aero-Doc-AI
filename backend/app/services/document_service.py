@@ -9,7 +9,7 @@ from app.utils.parsers import DocumentParser
 from app.utils.embeddings import GeminiEmbeddings
 from app.services.vector_store import VectorStore
 from app.config import settings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from typing import List, Dict, Any
 from uuid import UUID
 import os

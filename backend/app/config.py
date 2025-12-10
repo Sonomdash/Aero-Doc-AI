@@ -41,8 +41,8 @@ class Settings(BaseSettings):
     TOP_K_RESULTS: int = 5
     
     # LLM Configuration
-    LLM_MODEL: str = "gemini-pro"
-    EMBEDDING_MODEL: str = "models/embedding-001"
+    LLM_MODEL: str = "gemini-1.5-flash"
+    EMBEDDING_MODEL: str = "models/text-embedding-004"
     LLM_TEMPERATURE: float = 0.7
     MAX_OUTPUT_TOKENS: int = 2048
     

@@ -9,7 +9,7 @@ from app.services.vector_store import VectorStore
 from app.utils.embeddings import GeminiEmbeddings
 from app.config import settings
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.schema import HumanMessage, SystemMessage, AIMessage
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from typing import List, Dict, Any, Optional
 from uuid import UUID
 import json
@@ -21,10 +21,9 @@ class ChatService:
         self.vector_store = VectorStore()
         self.embeddings = GeminiEmbeddings()
         self.llm = ChatGoogleGenerativeAI(
-            model="gemini-pro",
+            model=settings.LLM_MODEL,
             google_api_key=settings.GEMINI_API_KEY,
             temperature=0.7,
-            convert_system_message_to_human=True
         )
         self.system_prompt = """You are Aero-Doc AI, an intelligent assistant designed to help users understand their technical documents.
         Use the following pieces of retrieved context to answer the user's question.

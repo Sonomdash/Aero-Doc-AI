@@ -8,15 +8,16 @@
 Бүх service-үүдийг асаана. Хэрэв image байхгүй бол татаж авна.
 ```bash
 docker-compose up -d
+docker restart aerodoc-backend
 ```
-* `-d`: Detached mode (цаана ажиллана, terminal гацахгүй)
+* `-d`: Detached mode
 
 ### 2. Шинэчлэлт хийж Асаах (Rebuild & Start)
 Кодонд өөрчлөлт орсон эсвэл `requirements.txt`-д сан нэмсэн бол заавал ингэж асаана.
 ```bash
 docker-compose up -d --build
 ```
-* `--build`: Image-ийг шинээр угсарна (таны сая асуусан команд)
+* `--build`: Image-ийг шинээр угсарна
 
 ### 3. Зогсоох (Stop)
 Ажиллаж буй бүх service-үүдийг зогсооно.

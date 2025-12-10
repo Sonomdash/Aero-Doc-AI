@@ -557,44 +557,6 @@ aero-doc-ai/
 
 ---
 
-## 🚀 Хөгжүүлэлтийн Алхмууд
-
-### Phase 1: Backend Foundation (2-3 хоног)
-- [x] FastAPI project setup
-- [x] PostgreSQL models (SQLAlchemy)
-- [x] Alembic migrations
-- [x] JWT authentication
-- [x] Basic CRUD APIs (users, documents)
-- [x] Docker Compose configuration
-
-### Phase 2: RAG Pipeline (3-4 хоног)
-- [ ] PDF/Word parsing utilities
-- [ ] Text chunking (LangChain)
-- [ ] ChromaDB integration
-- [ ] Gemini API integration (embeddings + generation)
-- [ ] RAG service implementation
-- [ ] Document upload & processing endpoint
-- [ ] Chat endpoint with RAG
-
-### Phase 3: Frontend (2-3 хоног)
-- [ ] Next.js project setup
-- [ ] Authentication pages (login/register)
-- [ ] Dashboard layout
-- [ ] Chat interface component
-- [ ] Document upload component
-- [ ] Chat history view
-- [ ] API integration (Axios + React Query)
-
-### Phase 4: Testing & Optimization (2 хоног)
-- [ ] Unit tests (pytest)
-- [ ] Integration tests
-- [ ] Mock data testing
-- [ ] Performance optimization
-- [ ] Error handling improvements
-- [ ] Documentation
-
----
-
 ## ⚙️ Тохиргоо
 
 ### Gemini API Key авах
@@ -647,87 +609,6 @@ llm = ChatGoogleGenerativeAI(
 ```
 
 ---
-
-## 🧪 Тестлэх
-
-### Backend тестүүд
-
-```bash
-cd backend
-
-# Бүх тестүүд ажиллуулах
-pytest
-
-# Coverage-тай
-pytest --cov=app --cov-report=html
-
-# Тодорхой тест
-pytest tests/test_auth.py -v
-```
-
-### Frontend тестүүд
-
-```bash
-cd frontend
-
-# Jest тестүүд
-npm test
-
-# E2E тестүүд (Playwright)
-npm run test:e2e
-```
-
-### Manual Testing
-
-1. **Document Upload Test**
-   - PDF файл оруулах
-   - Processing status шалгах
-   - ChromaDB-д chunk-үүд хадгалагдсан эсэхийг шалгах
-
-2. **RAG Test**
-   - Баримттай холбоотой асуулт асуух
-   - Хариулт болон эх сурвалж харагдаж байгаа эсэхийг шалгах
-   - Баримттай холбоогүй асуулт асуух (хариулт олдохгүй гэж хэлэх ёстой)
-
-3. **Chat History Test**
-   - Олон асуулт асуух
-   - Session хадгалагдаж байгаа эсэхийг шалгах
-   - Өмнөх чатуудыг харах
-
----
-
-## 📝 Mock Data
-
-Тест хийхэд зориулсан жишээ баримтууд:
-
-### Sample PDF Content
-
-```
-Техникийн Гарын Авлага - Aero System v2.0
-
-1. Танилцуулга
-Aero System нь автомат удирдлагын систем бөгөөд...
-
-2. Суулгах Заавар
-2.1 Системийн шаардлага
-- CPU: Intel i5 эсвэл дээш
-- RAM: 8GB
-- OS: Windows 10/11, Linux
-
-2.2 Суулгах алхмууд
-1. Setup файлыг татаж авах
-2. Administrator эрхээр ажиллуулах
-3. Заавруудыг дагаж суулгах
-...
-```
-
-Энэ баримтыг оруулсны дараа дараах асуултуудыг тест хийж болно:
-- "Системийн шаардлага юу вэ?"
-- "Хэрхэн суулгах вэ?"
-- "Ямар CPU хэрэгтэй вэ?"
-
----
-
 ## 🔒 Аюулгүй Байдал
 
 - ✅ JWT token-based authentication
@@ -753,12 +634,6 @@ docker-compose logs -f backend
 ```bash
 docker-compose exec postgres psql -U postgres -d aerodoc
 
-# Tables харах
-\dt
-
-# Users харах
-SELECT * FROM users;
-```
 
 ### ChromaDB шалгах
 
@@ -776,37 +651,3 @@ curl http://localhost:8001/api/v1/collections
 - [Google Gemini API](https://ai.google.dev/docs)
 - [ChromaDB Documentation](https://docs.trychroma.com/)
 - [Next.js Documentation](https://nextjs.org/docs)
-
----
-
-## 👥 Хөгжүүлэгчид
-
-- **Backend**: Python/FastAPI
-- **Frontend**: Next.js/TypeScript
-- **DevOps**: Docker/Docker Compose
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 🤝 Хувь нэмэр оруулах
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
----
-
-## 📞 Холбоо барих
-
-Асуулт, санал байвал issue үүсгэнэ үү.
-
----
-
-**Амжилт хүсье! 🚀**
