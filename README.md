@@ -29,7 +29,7 @@ RAG (Retrieval-Augmented Generation) технологи ашигласан мэ�
 
 - ✅ PDF, Word баримт бичгүүдийг уншиж, боловсруулна
 - ✅ Хэрэглэгчийн асуултад үндэслэн холбогдох мэдээллийг олно
-- ✅ Google Gemini AI ашиглан оновчтой хариулт үүсгэнэ
+- ✅ Groq (Llama 3) AI ашиглан оновчтой хариулт үүсгэнэ
 - ✅ Чат түүхийг хадгалж, өмнөх ярианы контекстийг ашиглана
 - ✅ JWT authentication ашиглан аюулгүй байдлыг хангана
 
@@ -43,7 +43,8 @@ RAG (Retrieval-Augmented Generation) технологи ашигласан мэ�
 | **Python 3.11+** | Үндсэн хэл |
 | **FastAPI** | Web framework, REST API |
 | **LangChain** | RAG pipeline удирдлага |
-| **Google Gemini API** | LLM (Text generation + Embeddings) |
+| **Groq API** | LLM (Text generation - Llama 3) |
+| **HuggingFace** | Local Embeddings (sentence-transformers) |
 | **ChromaDB** | Vector database (embedding хадгалах) |
 | **PostgreSQL** | Relational database (metadata, users, chat history) |
 | **SQLAlchemy** | ORM |
@@ -93,7 +94,7 @@ RAG (Retrieval-Augmented Generation) технологи ашигласан мэ�
 │  │  📄 Document Processing Service                    │  │
 │  │     - PDF/Word parsing                             │  │
 │  │     - Text chunking (1000 chars, 200 overlap)      │  │
-│  │     - Embedding generation (Gemini)                │  │
+│  │     - Embedding generation (HuggingFace Local)     │  │
 │  │     - ChromaDB storage                             │  │
 │  └────────────────────────────────────────────────────┘  │
 │  ┌────────────────────────────────────────────────────┐  │
@@ -101,7 +102,7 @@ RAG (Retrieval-Augmented Generation) технологи ашигласан мэ�
 │  │     - Query embedding                              │  │
 │  │     - Similarity search (ChromaDB)                 │  │
 │  │     - Context retrieval (top-k=5)                  │  │
-│  │     - Answer generation (Gemini Pro)               │  │
+│  │     - Answer generation (Groq Llama 3)             │  │
 │  └────────────────────────────────────────────────────┘  │
 │  ┌────────────────────────────────────────────────────┐  │
 │  │  💬 Chat Service                                   │  │
@@ -202,7 +203,7 @@ collection_name = "technical_documents"
 
 - **Docker** (20.10+)
 - **Docker Compose** (2.0+)
-- **Google Gemini API Key** ([https://ai.google.dev](https://ai.google.dev))
+- **Groq API Key** ([https://console.groq.com](https://console.groq.com))
 
 ### 1. Repository clone хийх
 
@@ -225,8 +226,8 @@ DATABASE_URL=postgresql://postgres:postgres@postgres:5432/aerodoc
 CHROMA_HOST=chromadb
 CHROMA_PORT=8000
 
-# Google Gemini API
-GEMINI_API_KEY=your_gemini_api_key_here
+# Groq API
+GROQ_API_KEY=your_groq_api_key_here
 
 # JWT
 SECRET_KEY=your_super_secret_key_here_min_32_chars
@@ -354,9 +355,9 @@ npm run dev
        ▼
 ┌─────────────────────────────┐
 │ Embedding Generation        │
-│ - Gemini Embedding API      │
-│ - Model: embedding-001      │
-│ - Dimension: 768            │
+│ - HuggingFace (Local)       │
+│ - Model: all-MiniLM-L6-v2   │
+│ - Dimension: 384            │
 └──────┬──────────────────────┘
        │
        ▼
@@ -376,7 +377,7 @@ npm run dev
        ▼
 ┌─────────────────────────────┐
 │ Query Embedding             │
-│ - Gemini Embedding API      │
+│ - HuggingFace (Local)       │
 └──────┬──────────────────────┘
        │
        ▼
@@ -406,7 +407,7 @@ npm run dev
        ▼
 ┌─────────────────────────────┐
 │ LLM Generation              │
-│ - Gemini Pro API            │
+│ - Groq API (Llama 3)        │
 │ - Temperature: 0.7          │
 └──────┬──────────────────────┘
        │
@@ -485,7 +486,7 @@ aero-doc-ai/
 │   │   └── utils/
 │   │       ├── __init__.py
 │   │       ├── security.py            # Password utilities
-│   │       ├── embeddings.py          # Gemini embedding wrapper
+│   │       ├── embeddings.py          # HuggingFace embedding wrapper
 │   │       ├── parsers.py             # PDF/Word parsers
 │   │
 │   ├── alembic/                       # Database migrations
@@ -559,10 +560,10 @@ aero-doc-ai/
 
 ## ⚙️ Тохиргоо
 
-### Gemini API Key авах
+### Groq API Key авах
 
-1. [Google AI Studio](https://ai.google.dev) руу орох
-2. "Get API Key" дарах
+1. [Groq Console](https://console.groq.com) руу орох
+2. "Create API Key" дарах
 3. API key-г хуулж, `.env` файлд оруулах
 
 ### ChromaDB тохиргоо
@@ -570,6 +571,7 @@ aero-doc-ai/
 ```python
 # backend/app/services/vector_store.py
 import chromadb
+# ... (same as before)
 
 client = chromadb.HttpClient(
     host=settings.CHROMA_HOST,
@@ -598,13 +600,12 @@ text_splitter = RecursiveCharacterTextSplitter(
 ### LLM параметрүүд
 
 ```python
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-pro",
-    temperature=0.7,        # Creativity (0.0-1.0)
-    max_output_tokens=2048,
-    google_api_key=settings.GEMINI_API_KEY
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    temperature=0.7,
+    api_key=settings.GROQ_API_KEY
 )
 ```
 
@@ -648,6 +649,7 @@ curl http://localhost:8001/api/v1/collections
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [LangChain Documentation](https://python.langchain.com/)
-- [Google Gemini API](https://ai.google.dev/docs)
+- [Groq Cloud Documentation](https://console.groq.com/docs)
+- [HuggingFace Documentation](https://huggingface.co/docs)
 - [ChromaDB Documentation](https://docs.trychroma.com/)
 - [Next.js Documentation](https://nextjs.org/docs)
