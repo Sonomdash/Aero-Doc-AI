@@ -805,19 +805,3 @@ CHROMA_PORT: int = 8000
 ✅ **Масштаблагдах**: Vector DB, async processing  
 
 ---
-
-## 🔗 Холбоотой Файлууд
-
-### Backend
-- [chat.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/routers/chat.py) - API endpoints
-- [chat_service.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/chat_service.py) - RAG logic
-- [vector_store.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/vector_store.py) - ChromaDB wrapper
-- [chat.py (models)](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/models/chat.py) - Database models
-
-### Frontend
-- [ChatInterface.tsx](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/frontend/src/components/Chat/ChatInterface.tsx) - Chat UI
-- [chat.ts](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/frontend/src/services/chat.ts) - API service
-
----
-
-Энэ баримт нь таны Aero-Doc-AI системийн chat logic болон RAG pipeline-ийн бүрэн үйл явцыг тайлбарласан болно. Асуулт байвал асуугаарай! 🚀

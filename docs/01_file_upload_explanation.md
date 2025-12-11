@@ -521,30 +521,3 @@ EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
 Upload → Validate → Save to Disk → DB Record → 
 Parse Text → Chunk → Embed → Vector Store → Update Status
 ```
-
-### Давуу Тал
-
-✅ Гурван давхарга хадгалалт (redundancy)  
-✅ Хэрэглэгчийн тусгаарлалт  
-✅ Бүрэн validation  
-✅ Error handling  
-✅ RAG-д бэлэн (vector search)  
-✅ Metadata tracking  
-
----
-
-## 🔗 Холбоотой Файлууд
-
-### Frontend
-- [DocumentUpload.tsx](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/frontend/src/components/Documents/DocumentUpload.tsx) - Upload UI
-- [documents.ts](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/frontend/src/services/documents.ts) - API service
-
-### Backend
-- [documents.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/routers/documents.py) - API endpoints
-- [document_service.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/document_service.py) - Business logic
-- [document.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/models/document.py) - Database model
-- [config.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/config.py) - Configuration
-
----
-
-Энэ баримт нь таны Aero-Doc-AI системийн файл upload болон хадгалалтын бүрэн үйл явцыг тайлбарласан болно. Нэмэлт асуулт байвал асуугаарай! 🚀

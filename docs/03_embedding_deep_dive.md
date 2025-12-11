@@ -438,12 +438,3 @@ query_embedding = self.embeddings.embed_query(content)
 ✅ **Free**: API зардал байхгүй  
 
 ---
-
-## 🔗 Холбоотой Файлууд
-
-- [embeddings.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/utils/embeddings.py) - Embedding wrapper
-- [chat_service.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/chat_service.py) - `embed_query()` ашиглалт
-
----
-
-Энэ тайлбар нь `embed_query()` функцийн бүх дэлгэрэнгүй мэдээллийг агуулсан болно! 🚀

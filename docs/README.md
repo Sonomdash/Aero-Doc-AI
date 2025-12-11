@@ -101,39 +101,3 @@ Backend API (FastAPI)
 | **Vector DB** | ChromaDB |
 | **Embeddings** | HuggingFace (local) |
 | **LLM** | Groq (Llama 3.3 70B) |
-
-### Гол Файлууд
-
-#### Backend
-- `backend/app/routers/documents.py` - Document upload endpoints
-- `backend/app/routers/chat.py` - Chat endpoints
-- `backend/app/services/document_service.py` - File processing
-- `backend/app/services/chat_service.py` - RAG logic
-- `backend/app/services/vector_store.py` - ChromaDB wrapper
-- `backend/app/utils/embeddings.py` - Embedding wrapper
-
-#### Frontend
-- `frontend/src/components/Documents/DocumentUpload.tsx` - Upload UI
-- `frontend/src/components/Chat/ChatInterface.tsx` - Chat UI
-- `frontend/src/services/documents.ts` - Document API
-- `frontend/src/services/chat.ts` - Chat API
-
----
-
-## 🚀 Эхлэх
-
-1. **File Upload** тайлбараас эхэл - Системийн үндсэн бүтцийг ойлгох
-2. **Chat Logic** тайлбар үзэх - RAG pipeline-ийг ойлгох
-3. **Embedding** тайлбар судлах - AI/ML дэлгэрэнгүй мэдэх
-
----
-
-## 📞 Холбоо Барих
-
-Асуулт эсвэл санал байвал project-ийн README файлыг үзнэ үү.
-
----
-
-**Огноо:** 2025-12-11  
-**Хувилбар:** 1.0  
-**Хэл:** Монгол

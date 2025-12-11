@@ -1039,13 +1039,3 @@ Save to Database
 | `get_user_sessions()` | Түүх авах | Бүх session-ууд |
 
 ---
-
-## 🔗 Холбоотой Файлууд
-
-- [document_service.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/document_service.py)
-- [vector_store.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/vector_store.py)
-- [chat_service.py](file:///Users/soonko/Documents/Dentsv/Aero-Doc-AI/backend/app/services/chat_service.py)
-
----
-
-Энэ тайлбар нь 3 үндсэн service файлуудын бүрэн дэлгэрэнгүй мэдээллийг агуулсан болно! 🚀
